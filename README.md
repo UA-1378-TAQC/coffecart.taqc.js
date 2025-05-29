@@ -39,20 +39,20 @@ cp .env.example .env
 ````
 
 ## 🧪 Test Execution Scripts
-| Script Command                                    | Description                                                                               |
-|---------------------------------------------------|-------------------------------------------------------------------------------------------|
-| `npm test`                                        | Runs all tests in headless mode.                                                          |
-| `npm run test:headed`                             | Runs all tests with browser UI visible.                                                   |
-| `npm run test:ui`                                 | Launches the **Playwright Test Runner UI** — interactive and visual.                      |
-| `npm run report`                                  | Opens the latest HTML(`playwright-report/`) test report in the browser.                   |
-| `npm run codegen`                                 | Launches **Playwright Codegen** — generates tests from browser actions.                   |
-| `npm run test:file --{yourTestNameSubstringHere}` | Runs a specific test file. (ex: `npm run test:file -- tests/PlaywrightTestExample.spec.ts`).            |
-| `npm run test:grep -- {yourTestNameSubstringHere}` | Runs tests matching **a substring in the test name**. `npm run test:grep -- loginWithVa`. |
-| `npm run test:serial`                             | Runs all tests **sequentially**, one at a time.                                           |
-| `npm run test:headed test:serial`                 | Runs all tests sequentially, one at a time with browser UI.                               |
-| `npm run test:headed:serial --{yourFileNameHere}` | Runs a specific file in headed & serial mode. (`npm run test:headed:serial --example`)    |
-| `npm run test:headed:file {yourFileNameHere}`     | Runs a specific file in headed **headed** mode (with browser UI).                         |
-| `npm run report`                                  | Opens the latest HTML(`playwright-report/`) test report in the browser.                   |
+| Script Command                                     | Description                                                                                                                            |
+|----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| `npm test`                                         | Runs all tests in headless mode.                                                                                                       |
+| `npm run test:headed`                              | Runs all tests with browser UI visible.                                                                                                |
+| `npm run test:ui`                                  | Launches the **Playwright Test Runner UI** — interactive and visual.                                                                   |
+| `npm run report`                                   | Opens the latest HTML(`playwright-report/`) test report in the browser.                                                                |
+| `npm run codegen`                                  | Launches **Playwright Codegen** — generates tests from browser actions.                                                                |
+| `npm run test:file -- {yourTestNameSubstringHere}` | Runs a specific test file. (ex: `npm run test:file -- tests/CoffeeCartTestExample.spec.ts`).                                           |
+| `npm run test:grep -- {yourTestNameSubstringHere}` | Runs tests matching **a substring in the test name**. `npm run test:grep -- Coffee`.                                              |
+| `npm run test:serial`                              | Runs all tests **sequentially**, one at a time.                                                                                        |
+| `npm run test:headed:serial`                       | Runs all tests sequentially, one at a time with browser UI.                                                                            |
+| `npm run test:headed:serial -- {yourFileNameHere}` | Runs a specific file in headed & serial mode. (`npm run test:headed:serial -- tests/CoffeeCartTestExample.spec.ts`)                    |
+| `npm run test:headed:file -- {yourFileNameHere}`   | Runs a specific file in headed **headed** mode (with browser UI).  (`npm run test:headed:file -- tests/CoffeeCartTestExample.spec.ts`) |
+| `npm run report`                                   | Opens the latest HTML(`playwright-report/`) test report in the browser.                                                                |
 
 ```
 coffecar-playwright/

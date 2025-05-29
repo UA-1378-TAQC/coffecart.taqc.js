@@ -13,8 +13,8 @@
     "test:grep": "playwright test --grep",
     "test:serial": "playwright test --workers=1",
     "test:headed:serial": "playwright test --headed --workers=1",
-    "test:headed:file": "playwright test --headed tests/playwrightTestExample.spec.ts",
-    "test:headed:serial:file": "playwright test --headed --workers=1 tests/playwrightTestExample.spec.ts"
+    "test:headed:file": "playwright test --headed ",
+    "test:headed:serial:file": "playwright test --headed --workers=1"
   },
   "keywords": [
     "playwright",
