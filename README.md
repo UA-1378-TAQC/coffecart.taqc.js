@@ -1,97 +1,71 @@
-# Coffecar Playwright
+# ☕ Coffecar Playwright
+**Automated end-to-end testing project for the Coffecar web application, powered by [Playwright](https://playwright.dev/).**  
+This project supports headless, headed, UI-driven testing, and is built with scalability and reliability in mind.
+---
 
-Automated testing project for the Coffecar application using Playwright.
+## 🚀 Prerequisites
+### 1. Install Node.js
+Ensure Node.js is installed:
 
-## Setup Instructions
-
-### 1. Install Node.js (if not already installed)
-Check if Node.js is installed:
-```
+```bash
 node -v
 npm -v
-```
-If not installed, download from:
-🔗 https://nodejs.org/
+````
+If not installed, download from [NodeJs](https://nodejs.org/)
 
-| Скрипт                                                | Що робить                                                                   |
-|-------------------------------------------------------|-----------------------------------------------------------------------------|
-| `npm test`                                            | Запускає всі тести у звичайному headless режимі.                            |
-| `npm run test:headed`                                 | Запускає всі тести з **інтерфейсом браузера** (headed mode).                |
-| `npm run test:ui`                                     | Відкриває **Playwright Test Runner UI** — зручно для вибору/запуску тестів. |
-| `npm run report`                                      | Відкриває HTML-звіт (`playwright-report/`) після прогону тестів.            |
-| `npm run codegen`                                     | Включає **Playwright Codegen** — записує кліки в реальний код.              |
-| `npm run test:file`                                   | Запускає конкретний тестовий файл (наприклад: `tests/example.spec.ts`).     |
-| `npm run test:grep -- {yourFileNameHere}`             | Запускає **тільки тести, що містять назву** у заголовку `test(...)`.        |
-| `npm run test:serial`                                 | Запускає всі тести **послідовно**, один за одним (`--workers=1`).           |
-| `npm run test:headed test:serial`                     | Запускає всі тести **послідовно**, один за одним (`--workers=1`).           |
-| `npm run test:headed:serial -- {yourFileNameHere}` | Запускає всі тести **послідовно**, один за одним (з конктерного файлу).     |
-| `npm run test:headed:serial -- {yourFileNameHere}` | Запускає всі тести **послідовно**, один за одним (з конктерного файлу).     |
-| `npm run test:headed:file {yourFileNameHere}`         | Запускає конкретний файл у **headed** режимі (з відкриттям браузера).       |
-
-
-Also install TypeScript: 
+### 2. Install TypeScript & Playwright
+```bash
 npm install --save-dev typescript
-
-Install Playwright:
 npm install --save-dev playwright
-
-Run test in headed mode:
-npx playwright test --headed
-
-Recommended: Use the latest LTS (Long Term Support) version.
-
-### 2. Clone the repository
-```
-git clone https://github.com/username/coffecar-playwright.git
-cd coffecar-playwright
-```
-### 3. Install dependencies
-```
-npm install
-```
-This will create/update node_modules/ and install all required dependencies.
 npx playwright install
-### 4. (Optional) Create .env file
-If the project uses environment variables:
-```
+````
+
+## 📦 Project Setup
+### 1. Clone the Repository
+```bash
+git clone https://github.com/UA-1378-TAQC/coffecart.taqc.js.playwright
+cd playwright
+````
+
+### 2. Install Dependencies
+```bash
+npm install
+````
+
+### 3. (Optional) Setup Environment Variables
+```bash
 cp .env.example .env
-```
-Then edit the file and add your values.
+# Edit the `.env` file with your values
+````
 
-## Running Tests
+## 🧪 Test Execution Scripts
+| Script Command                                    | Description                                                                               |
+|---------------------------------------------------|-------------------------------------------------------------------------------------------|
+| `npm test`                                        | Runs all tests in headless mode.                                                          |
+| `npm run test:headed`                             | Runs all tests with browser UI visible.                                                   |
+| `npm run test:ui`                                 | Launches the **Playwright Test Runner UI** — interactive and visual.                      |
+| `npm run report`                                  | Opens the latest HTML(`playwright-report/`) test report in the browser.                   |
+| `npm run codegen`                                 | Launches **Playwright Codegen** — generates tests from browser actions.                   |
+| `npm run test:file --{yourTestNameSubstringHere}` | Runs a specific test file. (ex: `npm run test:file -- tests/playwrightTestExample.spec.ts`).            |
+| `npm run test:grep -- {yourTestNameSubstringHere}` | Runs tests matching **a substring in the test name**. `npm run test:grep -- loginWithVa`. |
+| `npm run test:serial`                             | Runs all tests **sequentially**, one at a time.                                           |
+| `npm run test:headed test:serial`                 | Runs all tests sequentially, one at a time with browser UI.                               |
+| `npm run test:headed:serial --{yourFileNameHere}` | Runs a specific file in headed & serial mode. (`npm run test:headed:serial --example`)    |
+| `npm run test:headed:file {yourFileNameHere}`     | Runs a specific file in headed **headed** mode (with browser UI).                         |
+| `npm run report`                                  | Opens the latest HTML(`playwright-report/`) test report in the browser.                   |
 
-### Run all tests
 ```
-npm test
+coffecar-playwright/
+├── src/
+│   ├── component/       # Reusable components
+│   ├── modal/           # Modal windows
+│   └── pages/           # Page Object Model (POM) definitions
+│
+│── tests/               # Test specs
+│
+├── .env.example         # Sample environment config
+├── package.json         # Project metadata and scripts
+└── playwright.config.ts # Playwright configuration
 ```
-or
-```
-npx playwright test
-```
-
-### Run tests with browser UI visible
-```
-npm run test:headed
-```
-
-### Run tests with Playwright UI
-```
-npm run test:ui
-```
-
-### Run tests from a specific directory
-```
-npx playwright test tests
-```
-
-### View test report
-```
-npm run report
-```
-
-## Project Structure
-
-- `tests/` - Test files
-- `src/pages/` - Page objects
-- `src/modal/` - Modal components
-- `src/component/` - Reusable components
+⚠️ If you want to change playwright configuration, you can edit `playwright.config.ts` file. (Not recommended without group agreement) (If so, Do NOT push such changes to the repo)
+⚠️ If you want to turn off parallel execution, you can edit `fullyParallel: false` in `playwright.config.ts` file. (Do not push such changes to the repo)

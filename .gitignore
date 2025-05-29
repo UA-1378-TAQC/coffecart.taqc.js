@@ -135,5 +135,6 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-.test-results/
-.playwright-report/
+test-results/
+playwright-report/
+.idea/
