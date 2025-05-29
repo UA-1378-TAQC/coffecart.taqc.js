@@ -25,6 +25,7 @@ If not installed, download from:
 | `npm run test:serial`                                 | Запускає всі тести **послідовно**, один за одним (`--workers=1`).           |
 | `npm run test:headed test:serial`                     | Запускає всі тести **послідовно**, один за одним (`--workers=1`).           |
 | `npm run test:headed:serial -- {yourFileNameHere}` | Запускає всі тести **послідовно**, один за одним (з конктерного файлу).     |
+| `npm run test:headed:serial -- {yourFileNameHere}` | Запускає всі тести **послідовно**, один за одним (з конктерного файлу).     |
 | `npm run test:headed:file {yourFileNameHere}`         | Запускає конкретний файл у **headed** режимі (з відкриттям браузера).       |
 
 
