@@ -68,4 +68,5 @@ coffecar-playwright/
 └── playwright.config.ts # Playwright configuration
 ```
 ⚠️ If you want to change playwright configuration, you can edit `playwright.config.ts` file. (Not recommended without group agreement) (If so, Do NOT push such changes to the repo)
-⚠️ If you want to turn off parallel execution, you can edit `fullyParallel: false` in `playwright.config.ts` file. (Do not push such changes to the repo)
+
+⚠ ️ If you want to turn off parallel execution, you can edit `fullyParallel: false` in `playwright.config.ts` file. (Do not push such changes to the repo)
