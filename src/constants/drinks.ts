@@ -1,0 +1,13 @@
+export const CoffeeTypes = {
+    ESPRESSO: 'ESPRESSO',
+    ESPRESSO_MACCHIATO: 'ESPRESSO_MACCHIATO',
+    CAPPUCCINO: 'CAPPUCCINO',
+    MOCHA: 'MOCHA',
+    FLAT_WHITE: 'FLAT_WHITE',
+    AMERICANO: 'AMERICANO',
+    CAFE_LATTE: 'CAFE_LATTE',
+    ESPRESSO_CON_PANNA: 'ESPRESSO_CON_PANNA',
+    CAFE_BREVE: 'CAFE_BREVE'
+} as const;
+
+export type CoffeeType = keyof typeof CoffeeTypes;
