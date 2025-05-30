@@ -6,7 +6,7 @@
     "paths": {
       "@pages/*": ["src/pages/*"],
       "@modal/*": ["src/modal/*"],
-      "@tests/*": ["tests/*"]
+      "@tests/*": ["tests/*"],
     },
     "strict": true,
     "esModuleInterop": true,
