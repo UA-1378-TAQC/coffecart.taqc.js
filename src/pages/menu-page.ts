@@ -1,0 +1,30 @@
+import { Page, Locator } from '@playwright/test';
+
+const SELECTORS = {
+    totalButton: '#app > div:nth-child(3) > div.pay-container > button',
+    getDrinkSibling: (drinkName: string): string =>
+        `//*[@id='app']/div[2]/ul/li/h4[normalize-space(text())='${drinkName}']/following-sibling::*[1]`,
+};
+
+export class MenuPage {
+    private readonly page: Page;
+    private readonly totalButton: Locator;
+
+    constructor(page: Page) {
+        this.page = page;
+        this.totalButton = page.locator(SELECTORS.totalButton);
+    }
+
+    async visit(): Promise<void> {
+        await this.page.goto('/');
+    }
+
+    async clickOnDrink(drinkName: string): Promise<void> {
+        const drinkLocator = this.page.locator(SELECTORS.getDrinkSibling(drinkName));
+        await drinkLocator.first().click();
+    }
+
+    async clickTotalButton(): Promise<void> {
+        await this.totalButton.click();
+    }
+}
