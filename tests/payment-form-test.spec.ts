@@ -18,6 +18,7 @@ test.describe('Verify Payment Form Accepts Valid Inputs', () => {
 
         await menuPage.visit();
         await menuPage.clickOnDrink(TESTING_DRINK_NAME);
+        const totalTextBefore = await menuPage.getTotalButtonText();
         await menuPage.clickTotalButton();
         await paymentModal.enterName(VALID_NAME);
         await paymentModal.enterEmail(VALID_EMAIL);
