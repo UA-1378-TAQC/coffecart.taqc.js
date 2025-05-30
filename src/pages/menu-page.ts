@@ -29,7 +29,7 @@ export class MenuPage {
     }
 
     async getTotalButtonText(): Promise<string> {
-        return await this.totalButton.textContent() || '';
+        return await this.totalButton.textContent() ?? '';
     }
 
 }

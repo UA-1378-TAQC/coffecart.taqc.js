@@ -17,8 +17,8 @@ export class SuccessfulModal {
         await expect(this.successText).toBeVisible();
     }
 
-    async verifyMessage(expected: string): Promise<void> {
+    async getMessageText(): Promise<string> {
         await this.waitForVisible();
-        await expect(this.successText).toHaveText(expected);
+        return await this.successText.textContent() ?? '';
     }
 }

@@ -22,7 +22,9 @@ test.describe('Verify Payment Form Accepts Valid Inputs', () => {
         await paymentModal.enterName(VALID_NAME);
         await paymentModal.enterEmail(VALID_EMAIL);
         await paymentModal.clickSubmit();
-        await successModal.verifyMessage(SUCCESS_MESSAGE);
+
+        const successMessageText = await successModal.getMessageText();
+        expect(successMessageText.trim()).toBe(SUCCESS_MESSAGE);
 
         const totalText = await menuPage.getTotalButtonText();
         expect(totalText.trim()).toBe(EMPTY_CART_VALUES);
