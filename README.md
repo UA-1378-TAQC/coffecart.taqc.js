@@ -1,4 +1,4 @@
-# ☕ Coffecar Playwright
+# ☕ CoffeCart Playwright
 **Automated end-to-end testing project for the Coffecar web application, powered by [Playwright](https://playwright.dev/).**  
 This project supports headless, headed, UI-driven testing, and is built with scalability and reliability in mind.
 ---
