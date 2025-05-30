@@ -27,4 +27,9 @@ export class MenuPage {
     async clickTotalButton(): Promise<void> {
         await this.totalButton.click();
     }
+
+    async getTotalButtonText(): Promise<string> {
+        return await this.totalButton.textContent() || '';
+    }
+
 }

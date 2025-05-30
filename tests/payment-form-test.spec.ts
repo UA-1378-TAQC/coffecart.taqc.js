@@ -1,4 +1,4 @@
-import { test } from '@playwright/test';
+import {expect, test} from '@playwright/test';
 
 import { MenuPage } from '@pages/menu-page';
 import { PaymentModal } from '@modal/payment-detail-modal';
@@ -23,5 +23,8 @@ test.describe('Verify Payment Form Accepts Valid Inputs', () => {
         await paymentModal.enterEmail(VALID_EMAIL);
         await paymentModal.clickSubmit();
         await successModal.verifyMessage(SUCCESS_MESSAGE);
+
+        const totalText = await menuPage.getTotalButtonText();
+        expect(totalText.trim()).toBe(EMPTY_CART_VALUES);
     });
 });
