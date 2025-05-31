@@ -1,4 +1,4 @@
-import {expect, Locator, Page} from '@playwright/test';
+import {Locator, Page} from '@playwright/test';
 
 const SELECTORS = {
     drinkElement: (drinkName: string) => `//*[@id='app']/div[2]/ul/li/h4[normalize-space(text())='${drinkName}']/following-sibling::*`,
@@ -14,15 +14,15 @@ const SELECTORS = {
 };
 
 export class MenuPage {
-    readonly page: Page;
-    readonly drinkElement: (drinkName: string) => Locator;
-    readonly cartPageLink: Locator;
-    readonly totalButton: Locator;
-    readonly plusButtonCartModal: Locator;
-    readonly minusButtonCartModal: Locator;
-    readonly paymentModal: Locator;
-    readonly successfulPopup: Locator;
-    readonly popup: Locator;
+    private readonly page: Page;
+    private readonly drinkElement: (drinkName: string) => Locator;
+    private readonly cartPageLink: Locator;
+    private readonly totalButton: Locator;
+    private readonly plusButtonCartModal: Locator;
+    private readonly minusButtonCartModal: Locator;
+    private readonly paymentModal: Locator;
+    private readonly successfulPopup: Locator;
+    private readonly popup: Locator;
 
     constructor(page: Page) {
         this.page = page;
