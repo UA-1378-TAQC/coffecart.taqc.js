@@ -3,8 +3,7 @@ import { MenuPage } from '@pages/menu-page';
 import { CartPage } from '@pages/cart-page';
 import { PaymentModal } from '@modal/payment-detail-modal';
 import { SuccessfulModal } from '@modal/successful-modal';
-import {ClearTheCartTestData as Data} from './data/successfull-payment-clear-the-cart-data'
-import { beforeEach } from 'node:test';
+import {ClearTheCartTestData as Data} from './data/successful-payment-clear-the-cart-data'
 
 test.describe('Verify successful payment clear the cart', ()=>{
     let menuPage : MenuPage;
