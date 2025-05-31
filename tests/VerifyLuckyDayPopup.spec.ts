@@ -1,5 +1,5 @@
 import {test, expect} from '@playwright/test';
-import {MenuPage} from '../src/pages/menu-page';
+import {MenuPage} from '@pages/menu-page';
 
 test.describe('Lucky Day Popup Tests', () => {
     let menuPage: MenuPage;

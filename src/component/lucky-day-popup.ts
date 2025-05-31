@@ -1,4 +1,4 @@
-import { Locator, Page, expect } from '@playwright/test';
+import {Locator, Page, expect} from '@playwright/test';
 
 export class LuckyDayPopup {
     readonly page: Page;
@@ -16,11 +16,11 @@ export class LuckyDayPopup {
     }
 
     async waitForPopupVisible() {
-        await this.popup.waitFor({ state: 'visible' });
+        await this.popup.waitFor({state: 'visible'});
     }
 
     async waitForPopupHidden() {
-        await this.popup.waitFor({ state: 'hidden' });
+        await this.popup.waitFor({state: 'hidden'});
     }
 
     async verifyPopupContent() {

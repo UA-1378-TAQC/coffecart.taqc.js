@@ -1,5 +1,5 @@
-import { Page, Locator } from '@playwright/test';
-import {LuckyDayPopup} from '../component/lucky_day_popup';
+import {Page, Locator} from '@playwright/test';
+import {LuckyDayPopup} from '../component/lucky-day-popup';
 
 const SELECTORS = {
     totalButton: '//*[@class="pay"]',
