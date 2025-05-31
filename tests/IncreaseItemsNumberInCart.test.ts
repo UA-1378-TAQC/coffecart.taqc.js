@@ -1,44 +1,43 @@
 import { test, expect } from '@playwright/test';
-import {MenuPage} from "../src/pages/menu-page";
-import {CartPage} from "../src/pages/cart-page";
-
-
+import { MenuPage } from '@pages/menu-page';
+import { CartPage } from '@pages/cart-page';
+import { ItemsInCartData as Data } from '@tests/data/increase-items-in-cart-data.cy';
 
 test.describe('Increase Items in Cart', () => {
-    let menuPage: MenuPage;
-    let cartPage: CartPage;
-
-    test.beforeEach(async ({ page }) => {
+    test('Verify that user can increase the number of items in the Cart', async ({ page }) => {
+        let menuPage: MenuPage;
+        let cartPage: CartPage;
         menuPage = new MenuPage(page);
         cartPage = new CartPage(page);
-        await page.goto('https://coffee-cart.app/');
-    });
 
-    test('Verify that user can increase the number of items in the Cart', async () => {
-        await menuPage.goToMenuPage();
-        await menuPage.clickOnDrinkElement('Espresso Macchiato');
+        await menuPage.visit();
+        await menuPage.clickOnDrink(Data.testingDrink);
         await menuPage.goToCartPage();
 
         let totalPrice = await cartPage.getTotalPrice();
-        expect(totalPrice).toBe('$12.00');
+        expect(totalPrice).toBe(Data.totalPriceBefore);
 
         let totalText = await cartPage.getTotalText();
-        expect(totalText).toBe('Total: $12.00');
+        expect(totalText).toBe(Data.totalButtonBefore);
 
-        await cartPage.verifyPriceAndAmount('$12.00 x 1');
+        let cartData = await cartPage.getCartData();
+        expect(cartData).toBe(Data.cartDataBefore);
 
-        await cartPage.verifyCartAmount('cart (1)');
+        let cartAmount = await cartPage.getCartAmount();
+        expect(cartAmount).toBe(Data.cartAmountBefore);
 
         await cartPage.clickPlusButton();
 
         totalPrice = await cartPage.getTotalPrice();
-        expect(totalPrice).toBe('$24.00');
+        expect(totalPrice).toBe(Data.totalPriceAfter);
 
         totalText = await cartPage.getTotalText();
-        expect(totalText).toBe('Total: $24.00');
+        expect(totalText).toBe(Data.totalButtonAfter);
 
-        await cartPage.verifyPriceAndAmount('$12.00 x 2');
+        cartData = await cartPage.getCartData();
+        expect(cartData).toBe(Data.cartDataAfter);
 
-        await cartPage.verifyCartAmount('cart (2)');
+        cartAmount = await cartPage.getCartAmount();
+        expect(cartAmount).toBe(Data.cartAmountAfter);
     });
 });

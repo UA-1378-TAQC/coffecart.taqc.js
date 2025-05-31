@@ -1,111 +1,74 @@
-import { Locator, Page, expect } from '@playwright/test';
+import { Locator, Page } from '@playwright/test';
+
+const SELECTORS = {
+    menuPageLink: "//a[@aria-label='Menu page']",
+    totalButton: "//button[contains(text(), 'Total')]",
+    paymentModal: "//div[@class='modal']",
+    totalPrice: "//div[@class='unit-controller']/../following-sibling::*[1]",
+    plusButton: "//*[@id=\"app\"]/div[2]/div/ul/li[2]/div[2]/div/button[1]",
+    minusButton: "//*[@id=\"app\"]/div[2]/div/ul/li[2]/div[2]/div/button[2]",
+    emptyText: "//*[contains(text(),\"No coffee, go add some.\")]",
+    dataInCart: "//*[@id=\"app\"]/div[2]/div/ul/li[2]/div[2]/span",
+    dataInCartTotalPrice: "//*[@id=\"app\"]/div[2]/div/ul/li[2]/div[3]",
+    cartAmount: "//*[@id=\"app\"]/ul/li[2]/a"
+};
 
 export class CartPage {
-    readonly page: Page;
-    readonly menuPageLink: Locator;
-    readonly totalButton: Locator;
-    readonly paymentModal: Locator;
-    readonly totalPrice: Locator;
-    readonly plusButton: Locator;
-    readonly minusButton: Locator;
-    readonly emptyText: Locator;
-    readonly dataInCart: Locator;
-    readonly dataInCartTotalPrice: Locator;
-    readonly cartAmount: Locator;
+    private page: Page;
+    menuPageLink: Locator;
+    totalButton: Locator;
+    paymentModal: Locator;
+    totalPrice: Locator;
+    plusButton: Locator;
+    minusButton: Locator;
+    emptyText: Locator;
+    dataInCart: Locator;
+    dataInCartTotalPrice: Locator;
+    cartAmount: Locator;
 
     constructor(page: Page) {
         this.page = page;
-        this.menuPageLink = page.locator("//a[@aria-label='Menu page']");
-        this.totalButton = page.locator("//button[contains(text(), 'Total')]");
-        this.paymentModal = page.locator("//div[@class='modal']");
-        this.totalPrice = page.locator("//div[@class='unit-controller']/../following-sibling::*[1]");
-        this.plusButton = page.locator("//*[@id=\"app\"]/div[2]/div/ul/li[2]/div[2]/div/button[1]");
-        this.minusButton = page.locator("//*[@id=\"app\"]/div[2]/div/ul/li[2]/div[2]/div/button[2]");
-        this.emptyText = page.locator("//*[contains(text(),\"No coffee, go add some.\")]");
-        this.dataInCart = page.locator("//*[@id=\"app\"]/div[2]/div/ul/li[2]/div[2]/span");
-        this.dataInCartTotalPrice = page.locator("//*[@id=\"app\"]/div[2]/div/ul/li[2]/div[3]");
-        this.cartAmount = page.locator("//*[@id=\"app\"]/ul/li[2]/a");
+        this.menuPageLink = page.locator(SELECTORS.menuPageLink);
+        this.totalButton = page.locator(SELECTORS.totalButton);
+        this.paymentModal = page.locator(SELECTORS.paymentModal);
+        this.totalPrice = page.locator(SELECTORS.totalPrice);
+        this.plusButton = page.locator(SELECTORS.plusButton);
+        this.minusButton = page.locator(SELECTORS.minusButton);
+        this.emptyText = page.locator(SELECTORS.emptyText);
+        this.dataInCart = page.locator(SELECTORS.dataInCart);
+        this.dataInCartTotalPrice = page.locator(SELECTORS.dataInCartTotalPrice);
+        this.cartAmount = page.locator(SELECTORS.cartAmount);
     }
 
-    async clickOnTotalButton() {
-        await this.totalButton.waitFor();
+    async clickOnTotalButton(): Promise<void> {
         await this.totalButton.click();
     }
 
-    async goToMenuPage() {
-        await this.menuPageLink.waitFor();
+    async goToMenuPage(): Promise<void> {
         await this.menuPageLink.click();
     }
 
-    async verifyPaymentModalAppears() {
-        await this.paymentModal.waitFor();
-    }
-
-    async clickPlusButton() {
+    async clickPlusButton(): Promise<void> {
         await this.plusButton.click();
     }
 
-    async clickMinusButton() {
+    async clickMinusButton(): Promise<void> {
         await this.minusButton.click();
     }
 
-    async getTotalPrice() {
+    async getTotalPrice(): Promise<string | null> {
         return await this.totalPrice.textContent();
     }
 
-    async getTotalText() {
+    async getTotalText(): Promise<string | null> {
         return await this.totalButton.textContent();
     }
 
-    async getCartData() {
+    async getCartData(): Promise<string | null> {
         return await this.dataInCart.textContent();
     }
 
-    async getCartPrice() {
-        return await this.dataInCartTotalPrice.textContent();
-    }
-
-    async getCartAmount() {
+    async getCartAmount(): Promise<string | null> {
         return await this.cartAmount.textContent();
-    }
-
-    async totalButtonShouldBeVisible() {
-        await this.totalButton.waitFor();
-        await expect(this.totalButton).toBeVisible();
-    }
-
-    async totalButtonShouldNotBeVisible() {
-        await this.totalButton.waitFor({ state: 'hidden' });
-        await expect(this.totalButton).not.toBeVisible();
-    }
-
-    async cartPageShouldContainEmptyTextElement() {
-        await this.emptyText.waitFor();
-        await expect(this.emptyText).toBeVisible();
-    }
-
-    async verifyPriceAndAmount(expectedData: string) {
-        const actualData = await this.getCartData();
-        expect(actualData).toBe(expectedData);
-    }
-
-    async verifyPrice(expectedData: string) {
-        const actualData = await this.getCartPrice();
-        expect(actualData).toBe(expectedData);
-    }
-
-    async verifyTotalPrice(expectedData: string) {
-        const actualData = await this.getTotalText();
-        expect(actualData).toBe(expectedData);
-    }
-
-    async verifyCartAmount(expectedData: string) {
-        const actualData = await this.getCartAmount();
-        expect(actualData).toBe(expectedData);
-    }
-
-    async verifyDrinkIsInCart(drinkName: string) {
-        const itemXpath = `//li[contains(text(), '${drinkName}')]`;
-        await this.page.locator(itemXpath).waitFor({ timeout: 5000 });
     }
 }
