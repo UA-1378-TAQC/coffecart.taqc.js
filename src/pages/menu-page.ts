@@ -13,13 +13,11 @@ export class MenuPage {
     readonly cartPageLink: Locator;
     readonly luckyDayPopup: LuckyDayPopup;
 
-
     constructor(page: Page) {
         this.page = page;
         this.totalButton = page.locator(SELECTORS.totalButton);
         this.cartPageLink = page.locator('//a[@aria-label=\'Cart page\']');
         this.luckyDayPopup = new LuckyDayPopup(page);
-
     }
 
     async visit(): Promise<void> {
@@ -49,6 +47,5 @@ export class MenuPage {
         const match = text?.match(/\((\d+)\)/);
         return match ? parseInt(match[1]) : 0;
     }
-
 
 }
