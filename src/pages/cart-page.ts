@@ -14,17 +14,17 @@ const SELECTORS = {
 };
 
 export class CartPage {
-    private page: Page;
-    menuPageLink: Locator;
-    totalButton: Locator;
-    paymentModal: Locator;
-    totalPrice: Locator;
-    plusButton: Locator;
-    minusButton: Locator;
-    emptyText: Locator;
-    dataInCart: Locator;
-    dataInCartTotalPrice: Locator;
-    cartAmount: Locator;
+    private readonly page: Page;
+    private readonly menuPageLink: Locator;
+    private readonly totalButton: Locator;
+    private readonly paymentModal: Locator;
+    private readonly totalPrice: Locator;
+    private readonly plusButton: Locator;
+    private readonly minusButton: Locator;
+    private readonly emptyText: Locator;
+    private readonly dataInCart: Locator;
+    private readonly dataInCartTotalPrice: Locator;
+    private readonly cartAmount: Locator;
 
     constructor(page: Page) {
         this.page = page;
