@@ -1,32 +1,37 @@
-import {expect, Locator, Page} from '@playwright/test';
+import { Page, Locator } from '@playwright/test';
+
+const SELECTORS = {
+    totalButton: '//*[@class="pay"]',
+    getDrinkSibling: (drinkName: string): string =>
+        `//h4[normalize-space(text())='${drinkName}']/following-sibling::*[1]`,
+};
 
 export class MenuPage {
-    readonly page: Page;
-    readonly drinkElement: (drinkName: string) => Locator;
-    readonly cartPageLink: Locator;
-    readonly totalButton: Locator;
-    readonly plusButtonCartModal: Locator;
-    readonly minusButtonCartModal: Locator;
-    readonly paymentModal: Locator;
-    readonly successfulPopup: Locator;
-    readonly popup: Locator;
+    private readonly page: Page;
+    private readonly totalButton: Locator;
 
     constructor(page: Page) {
         this.page = page;
-        this.drinkElement = (drinkName: string) => page.locator(`//*[@id='app']/div[2]/ul/li/h4[normalize-space(text())='${drinkName}']/following-sibling::*`);
-        this.cartPageLink = page.locator("//a[@aria-label='Cart page']");
-        this.totalButton = page.locator("//button[@class='pay']");
-        this.plusButtonCartModal = page.locator("//*[@id='app']/div[2]/div[1]/ul/li/div[2]/button[1]");
-        this.minusButtonCartModal = page.locator("//*[@id='app']/div[2]/div[1]/ul/li/div[2]/button[2]");
-        this.paymentModal = page.locator("//div[@class='modal']");
-        this.successfulPopup = page.locator("//div[contains(@class,'snackbar success')]");
-        this.popup = page.locator("//*[@class='promo']");
+        this.totalButton = page.locator(SELECTORS.totalButton);
     }
 
-    async clickOnDrinkElement(drinkName: string) {
-        await this.drinkElement(drinkName).waitFor();
-        await this.drinkElement(drinkName).click();
+    async visit(): Promise<void> {
+        await this.page.goto('/');
     }
+
+    async clickOnDrink(drinkName: string): Promise<void> {
+        const drinkLocator = this.page.locator(SELECTORS.getDrinkSibling(drinkName));
+        await drinkLocator.first().click();
+    }
+
+    async clickTotalButton(): Promise<void> {
+        await this.totalButton.click();
+    }
+
+    async getTotalButtonText(): Promise<string> {
+        return await this.totalButton.textContent() ?? '';
+    }
+
 
     async goToCartPage() {
         await this.cartPageLink.waitFor();
