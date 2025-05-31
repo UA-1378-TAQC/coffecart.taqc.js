@@ -1,7 +1,5 @@
 import {test, expect} from '@playwright/test';
 import {MenuPage} from '../src/pages/menu-page';
-import { CoffeeTypes } from '../src/constants/drinks';
-
 
 test.describe('Lucky Day Popup Tests', () => {
     let menuPage: MenuPage;
@@ -12,19 +10,19 @@ test.describe('Lucky Day Popup Tests', () => {
     });
 
     test('Verify that the "Lucky Day" popup appears after adding items and disappears when not interacted with', async () => {
-        await menuPage.addCoffeeToCart(CoffeeTypes.ESPRESSO);
-        await menuPage.addCoffeeToCart(CoffeeTypes.ESPRESSO_MACCHIATO);
-        await menuPage.addCoffeeToCart(CoffeeTypes.CAPPUCCINO);
+        await menuPage.clickOnDrink('Espresso');
+        await menuPage.clickOnDrink('Espresso Macchiato');
+        await menuPage.clickOnDrink('Cappuccino');
 
         await menuPage.luckyDayPopup.waitForPopupVisible();
         await menuPage.luckyDayPopup.verifyPopupContent();
 
-        await menuPage.addCoffeeToCart(CoffeeTypes.MOCHA);
+        await menuPage.clickOnDrink('Mocha');
 
         await menuPage.luckyDayPopup.waitForPopupHidden();
 
-        await menuPage.addCoffeeToCart(CoffeeTypes.FLAT_WHITE);
-        await menuPage.addCoffeeToCart(CoffeeTypes.AMERICANO);
+        await menuPage.clickOnDrink('Flat White');
+        await menuPage.clickOnDrink('Americano');
 
         await menuPage.luckyDayPopup.waitForPopupVisible();
         await menuPage.luckyDayPopup.verifyPopupContent();

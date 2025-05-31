@@ -15,10 +15,6 @@ export class LuckyDayPopup {
         this.noButton = this.popup.locator('button:has-text("Nah, I\'ll skip")');
     }
 
-    async isVisible(): Promise<boolean> {
-        return await this.popup.isVisible();
-    }
-
     async waitForPopupVisible() {
         await this.popup.waitFor({ state: 'visible' });
     }
