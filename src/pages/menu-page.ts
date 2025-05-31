@@ -3,7 +3,7 @@ import { Page, Locator } from '@playwright/test';
 const SELECTORS = {
     totalButton: '#app > div:nth-child(3) > div.pay-container > button',
     getDrinkSibling: (drinkName: string): string =>
-        `//*[@id='app']/div[2]/ul/li/h4[normalize-space(text())='${drinkName}']/following-sibling::*[1]`,
+        `//h4[normalize-space(text())='${drinkName}']/following-sibling::*[1]`,
 };
 
 export class MenuPage {
