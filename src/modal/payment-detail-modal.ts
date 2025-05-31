@@ -3,7 +3,7 @@ import { Page, Locator, expect } from '@playwright/test';
 const SELECTORS = {
     nameInput: '#name',
     emailInput: '#email',
-    submitButton: 'button[type="submit"]',
+    submitButton: '#submit-payment',
 };
 
 export class PaymentModal {
