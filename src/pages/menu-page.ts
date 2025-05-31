@@ -1,7 +1,7 @@
 import { Page, Locator } from '@playwright/test';
 
 const SELECTORS = {
-    totalButton: '#app > div:nth-child(3) > div.pay-container > button',
+    totalButton: '//*[@class="pay"]',
     getDrinkSibling: (drinkName: string): string =>
         `//h4[normalize-space(text())='${drinkName}']/following-sibling::*[1]`,
 };
