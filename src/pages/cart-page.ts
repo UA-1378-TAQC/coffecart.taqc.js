@@ -10,7 +10,9 @@ const SELECTORS = {
     emptyText: "//*[contains(text(),\"No coffee, go add some.\")]",
     dataInCart: "//*[@id=\"app\"]/div[2]/div/ul/li[2]/div[2]/span",
     dataInCartTotalPrice: "//*[@id=\"app\"]/div[2]/div/ul/li[2]/div[3]",
-    cartAmount: "//*[@id=\"app\"]/ul/li[2]/a"
+    cartAmount: "//*[@id=\"app\"]/ul/li[2]/a",
+    total: "//*[@id='app']/div[2]/div/div[1]/button",
+    noCoffee: "//*[@id='app']/div[2]/p",
 };
 
 export class CartPage {
@@ -25,6 +27,8 @@ export class CartPage {
     private readonly dataInCart: Locator;
     private readonly dataInCartTotalPrice: Locator;
     private readonly cartAmount: Locator;
+    private readonly total: Locator;
+    private readonly noCoffee: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -38,6 +42,8 @@ export class CartPage {
         this.dataInCart = page.locator(SELECTORS.dataInCart);
         this.dataInCartTotalPrice = page.locator(SELECTORS.dataInCartTotalPrice);
         this.cartAmount = page.locator(SELECTORS.cartAmount);
+        this.total = page.locator(SELECTORS.total);
+        this.noCoffee = page.locator(SELECTORS.noCoffee);
     }
 
     async clickOnTotalButton(): Promise<void> {
@@ -78,5 +84,17 @@ export class CartPage {
 
     async getCartAmount(): Promise<string | null> {
         return await this.cartAmount.textContent();
+    }
+
+    async getDataInCartTotalPrice(): Promise<string | null>{
+        return await this.dataInCartTotalPrice.textContent();
+    }
+
+    async totalOnCartPage(): Promise<string | null>{
+        return await this.total.textContent();
+    }
+
+    async getNoCoffeeMessage(): Promise<string | null>{
+        return await this.noCoffee.textContent();
     }
 }
