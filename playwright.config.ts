@@ -30,7 +30,7 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    headless: process.env.PLAYWRIGHT_HEADLESS === 'true' || true,
+    headless: process.env.PLAYWRIGHT_HEADLESS === 'true' || !!process.env.CI,
     baseURL: 'https://coffee-cart.app',
     /*screenshot: 'only-on-failure',
     video: 'retain-on-failure'*/
@@ -42,7 +42,7 @@ export default defineConfig({
       name: 'chromium',
       use: { 
         ...devices['Desktop Chrome'],
-        headless: process.env.PLAYWRIGHT_HEADLESS === 'true' || true,
+        headless: process.env.PLAYWRIGHT_HEADLESS === 'true' || !!process.env.CI,
       },
     },
 
@@ -50,7 +50,7 @@ export default defineConfig({
       name: 'firefox',
       use: { 
         ...devices['Desktop Firefox'],
-        headless: process.env.PLAYWRIGHT_HEADLESS === 'true' || true,
+        headless: process.env.PLAYWRIGHT_HEADLESS === 'true' || !!process.env.CI,
       },
     },
 
@@ -58,7 +58,7 @@ export default defineConfig({
       name: 'webkit',
       use: { 
         ...devices['Desktop Safari'],
-        headless: process.env.PLAYWRIGHT_HEADLESS === 'true' || true,
+        headless: process.env.PLAYWRIGHT_HEADLESS === 'true' || !!process.env.CI,
       },
     },
 
