@@ -5,10 +5,9 @@ import { ItemsInCartData as Data } from '@tests/data/increase-items-in-cart-data
 
 test.describe('Increase Items in Cart', () => {
     test('Verify that user can increase the number of items in the Cart', async ({ page }) => {
-        let menuPage: MenuPage;
-        let cartPage: CartPage;
-        menuPage = new MenuPage(page);
-        cartPage = new CartPage(page);
+
+        const menuPage = new MenuPage(page);
+        const cartPage = new CartPage(page);
 
         await menuPage.visit();
         await menuPage.clickOnDrink(Data.testingDrink);
