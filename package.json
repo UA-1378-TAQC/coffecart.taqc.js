@@ -4,7 +4,7 @@
   "description": "Playwright tests for Coffecar application",
   "main": "index.js",
   "scripts": {
-    "test": "CI=true xvfb-run --auto-servernum npx playwright test",
+    "test": "xvfb-run --auto-servernum npx playwright test",
     "test:headed": "playwright test --headed",
     "test:ui": "playwright test --ui",
     "report": "playwright show-report",
