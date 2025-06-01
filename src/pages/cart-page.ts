@@ -68,6 +68,14 @@ export class CartPage {
         return await this.dataInCart.textContent();
     }
 
+    async getEmptyText(): Promise<string | null> {
+        return await this.emptyText.textContent();
+    }
+
+    async getTotalButtonExist(): Promise<boolean> {
+        return await this.totalButton.count() > 0;
+    }
+
     async getCartAmount(): Promise<string | null> {
         return await this.cartAmount.textContent();
     }
