@@ -33,8 +33,8 @@ export default defineConfig({
     // Always run in headless mode in CI environment
     headless: true,
     baseURL: 'https://coffee-cart.app',
-    /*screenshot: 'only-on-failure',
-    video: 'retain-on-failure'*/
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure'
   },
 
   /* Configure projects for major browsers */
