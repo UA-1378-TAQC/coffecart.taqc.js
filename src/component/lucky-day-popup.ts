@@ -1,18 +1,25 @@
 import {Locator, Page, expect} from '@playwright/test';
 
+const SELECTORS = {
+    promo: "//*[@class='promo']",
+    popupTitle: 'text="It\'s your lucky day! Get an extra cup of Mocha for $4."',
+    yesButton: 'button:has-text("Yes, of course!")',
+    noButton: 'button:has-text("Nah, I\'ll skip")',
+};
+
 export class LuckyDayPopup {
-    readonly page: Page;
-    readonly popup: Locator;
-    readonly popupTitle: Locator;
-    readonly yesButton: Locator;
-    readonly noButton: Locator;
+    private readonly page: Page;
+    private readonly popup: Locator;
+    private readonly popupTitle: Locator;
+    private readonly yesButton: Locator;
+    private readonly noButton: Locator;
 
     constructor(page: Page) {
         this.page = page;
-        this.popup = page.locator('div.promo');
-        this.popupTitle = this.popup.locator('text="It\'s your lucky day! Get an extra cup of Mocha for $4."');
-        this.yesButton = this.popup.locator('button:has-text("Yes, of course!")');
-        this.noButton = this.popup.locator('button:has-text("Nah, I\'ll skip")');
+        this.popup = page.locator(SELECTORS.promo);
+        this.popupTitle = this.popup.locator(SELECTORS.popupTitle);
+        this.yesButton = this.popup.locator(SELECTORS.yesButton);
+        this.noButton = this.popup.locator(SELECTORS.noButton);
     }
 
     async waitForPopupVisible() {

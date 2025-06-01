@@ -1,6 +1,5 @@
 import {Page, Locator} from '@playwright/test';
-import {LuckyDayPopup} from '../component/lucky-day-popup';
-
+import {LuckyDayPopup} from '@component/lucky-day-popup'
 
 const SELECTORS = {
     drinkElement: (drinkName: string) => `//*[@id='app']/div[2]/ul/li/h4[normalize-space(text())='${drinkName}']/following-sibling::*`,
@@ -25,6 +24,8 @@ export class MenuPage {
     private readonly paymentModal: Locator;
     private readonly successfulPopup: Locator;
     private readonly popup: Locator;
+    readonly luckyDayPopup: LuckyDayPopup;
+
 
     constructor(page: Page) {
         this.page = page;
@@ -36,7 +37,9 @@ export class MenuPage {
         this.paymentModal = page.locator(SELECTORS.paymentModal);
         this.successfulPopup = page.locator(SELECTORS.successfulPopup);
         this.popup = page.locator(SELECTORS.popup);
+        this.luckyDayPopup = new LuckyDayPopup(page);
     }
+
 
     async visit(): Promise<void> {
         await this.page.goto('/');
@@ -55,16 +58,12 @@ export class MenuPage {
         return await this.totalButton.textContent() ?? '';
     }
 
-    async navigate() {
-        await this.page.goto('https://coffee-cart.app');
-        await this.page.waitForLoadState('domcontentloaded');
-    }
-
     async getCartCount(): Promise<number> {
         const text = await this.cartPageLink.textContent();
         const match = text?.match(/\((\d+)\)/);
         return match ? parseInt(match[1]) : 0;
     }
+
     async goToCartPage() {
         await this.cartPageLink.click();
     }

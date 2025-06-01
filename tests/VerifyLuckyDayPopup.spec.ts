@@ -1,12 +1,13 @@
 import {test, expect} from '@playwright/test';
 import {MenuPage} from '@pages/menu-page';
 
+
 test.describe('Lucky Day Popup Tests', () => {
     let menuPage: MenuPage;
 
     test.beforeEach(async ({page}) => {
         menuPage = new MenuPage(page);
-        await menuPage.navigate();
+        await menuPage.visit();
     });
 
     test('Verify that the "Lucky Day" popup appears after adding items and disappears when not interacted with', async () => {
@@ -30,4 +31,5 @@ test.describe('Lucky Day Popup Tests', () => {
         const cartCount = await menuPage.getCartCount();
         expect(cartCount).toBe(6);
     });
+
 });
