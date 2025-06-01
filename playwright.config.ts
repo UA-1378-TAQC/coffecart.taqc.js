@@ -32,8 +32,8 @@ export default defineConfig({
     trace: 'on-first-retry',
     headless: process.env.PLAYWRIGHT_HEADLESS === 'true' || true,
     baseURL: 'https://coffee-cart.app',
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure'
+    /*screenshot: 'only-on-failure',
+    video: 'retain-on-failure'*/
   },
 
   /* Configure projects for major browsers */
