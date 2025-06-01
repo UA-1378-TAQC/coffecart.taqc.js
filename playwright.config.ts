@@ -30,7 +30,7 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    headless: true,
+    headless: process.env.PLAYWRIGHT_HEADLESS === 'true' || true,
     baseURL: 'https://coffee-cart.app',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure'
@@ -40,12 +40,26 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { 
+        ...devices['Desktop Chrome'],
+        headless: process.env.PLAYWRIGHT_HEADLESS === 'true' || true,
+      },
     },
 
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      use: { 
+        ...devices['Desktop Firefox'],
+        headless: process.env.PLAYWRIGHT_HEADLESS === 'true' || true,
+      },
+    },
+
+    {
+      name: 'webkit',
+      use: { 
+        ...devices['Desktop Safari'],
+        headless: process.env.PLAYWRIGHT_HEADLESS === 'true' || true,
+      },
     },
 
     /* Test against mobile viewports. */
