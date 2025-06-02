@@ -67,6 +67,19 @@ export class MenuPage {
     async goToCartPage() {
         await this.cartPageLink.click();
     }
+
+    async isPaymentModalHidden(): Promise<boolean> {
+        return await this.paymentModal.isHidden();
+    }
+
+    async isSuccessfulPopuppVisible(): Promise<boolean> {
+        return await this.successfulPopup.isVisible();
+    }
+
+    async getCartLinkText(): Promise<string> {
+        return await this.cartPageLink.innerText();
+    }
+
 }
 
 

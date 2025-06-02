@@ -33,15 +33,15 @@ export default defineConfig({
     // Always run in headless mode in CI environment
     headless: true,
     baseURL: 'https://coffee-cart.app',
-    /*screenshot: 'only-on-failure',
-    video: 'retain-on-failure'*/
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure'
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-      use: { 
+      use: {
         ...devices['Desktop Chrome'],
         headless: true,
       },
@@ -49,7 +49,7 @@ export default defineConfig({
 
     {
       name: 'firefox',
-      use: { 
+      use: {
         ...devices['Desktop Firefox'],
         headless: true,
       },
@@ -57,7 +57,7 @@ export default defineConfig({
 
     {
       name: 'webkit',
-      use: { 
+      use: {
         ...devices['Desktop Safari'],
         headless: true,
       },

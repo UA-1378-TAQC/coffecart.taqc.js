@@ -4,14 +4,14 @@
   "description": "Playwright tests for Coffecar application",
   "main": "index.js",
   "scripts": {
-    "test": "playwright test",
+    "test": "xvfb-run --auto-servernum npx playwright test",
     "test:headed": "playwright test --headed",
     "test:ui": "playwright test --ui",
     "report": "playwright show-report",
     "codegen": "playwright codegen",
-    "test:file": "playwright test --",
-    "test:grep": "playwright test --grep",
-    "test:serial": "playwright test --workers=1",
+    "test:file": "xvfb-run --auto-servernum npx playwright test --",
+    "test:grep": "xvfb-run --auto-servernum npx playwright test --grep",
+    "test:serial": "xvfb-run --auto-servernum npx playwright test --workers=1",
     "test:headed:serial": "playwright test --headed --workers=1",
     "test:headed:file": "playwright test --headed ",
     "test:headed:serial:file": "playwright test --headed --workers=1"
