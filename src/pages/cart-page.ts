@@ -7,6 +7,8 @@ const SELECTORS = {
     totalPrice: "//div[@class='unit-controller']/../following-sibling::*[1]",
     plusButton: "//*[@id=\"app\"]/div[2]/div/ul/li[2]/div[2]/div/button[1]",
     minusButton: "//*[@id=\"app\"]/div[2]/div/ul/li[2]/div[2]/div/button[2]",
+    plusTotalButton: "//*[@id=\"app\"]/div[2]/div[1]/ul/li/div[2]/button[1]",
+    minusTotalButton: "//*[@id=\"app\"]/div[2]/div[1]/ul/li/div[2]/button[2]",
     emptyText: "//*[contains(text(),\"No coffee, go add some.\")]",
     dataInCart: "//*[@id=\"app\"]/div[2]/div/ul/li[2]/div[2]/span",
     dataInCartTotalPrice: "//*[@id=\"app\"]/div[2]/div/ul/li[2]/div[3]",
@@ -23,6 +25,8 @@ export class CartPage {
     private readonly totalPrice: Locator;
     private readonly plusButton: Locator;
     private readonly minusButton: Locator;
+    private readonly plusTotalButton: Locator;
+    private readonly minusTotalButton: Locator;
     private readonly emptyText: Locator;
     private readonly dataInCart: Locator;
     private readonly dataInCartTotalPrice: Locator;
@@ -38,6 +42,8 @@ export class CartPage {
         this.totalPrice = page.locator(SELECTORS.totalPrice);
         this.plusButton = page.locator(SELECTORS.plusButton);
         this.minusButton = page.locator(SELECTORS.minusButton);
+        this.plusTotalButton = page.locator(SELECTORS.plusTotalButton);
+        this.minusTotalButton = page.locator(SELECTORS.minusTotalButton);
         this.emptyText = page.locator(SELECTORS.emptyText);
         this.dataInCart = page.locator(SELECTORS.dataInCart);
         this.dataInCartTotalPrice = page.locator(SELECTORS.dataInCartTotalPrice);
@@ -60,6 +66,14 @@ export class CartPage {
 
     async clickMinusButton(): Promise<void> {
         await this.minusButton.click();
+    }
+
+    async clickPlusTotalButton(): Promise<void> {
+        await this.plusTotalButton.click();
+    }
+
+    async clickMinusTotalButton(): Promise<void> {
+        await this.minusTotalButton.click();
     }
 
     async getTotalPrice(): Promise<string | null> {
@@ -96,5 +110,9 @@ export class CartPage {
 
     async getNoCoffeeMessage(): Promise<string | null>{
         return await this.noCoffee.textContent();
+    }
+
+    mouseOverTotalButton(): Promise<void> {
+        return this.totalButton.hover();
     }
 }
