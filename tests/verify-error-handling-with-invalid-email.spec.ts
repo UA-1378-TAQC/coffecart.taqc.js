@@ -1,8 +1,8 @@
 import { expect, test } from '@playwright/test';
 
-import { MenuPage } from '../src/pages/menu-page';
-import { CartPage } from '../src/pages/cart-page';
-import { PaymentModal } from '../src/modal/payment-detail-modal';
+import { MenuPage } from '@pages/menu-page';
+import { CartPage } from '@pages/cart-page';
+import { PaymentModal } from '@modal/payment-detail-modal';
 
 test.describe('Verify Invalid Email Formats In Payment Form', () => {
     test('should reject invalid email formats and keep payment modal visible', async ({ page }) => {
