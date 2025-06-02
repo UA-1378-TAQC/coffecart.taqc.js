@@ -7,6 +7,7 @@
       "@pages/*": ["src/pages/*"],
       "@modal/*": ["src/modal/*"],
       "@tests/*": ["tests/*"],
+      "@component/*": ["src/component/*"]
     },
     "strict": true,
     "esModuleInterop": true,
