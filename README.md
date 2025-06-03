@@ -13,10 +13,9 @@ npm -v
 ````
 If not installed, download from [NodeJs](https://nodejs.org/)
 
-### 2. Install TypeScript & Playwright
+### 2. Install Dependencies
 ```bash
-npm install --save-dev typescript
-npm install --save-dev playwright
+npm install
 npx playwright install
 ````
 
@@ -25,11 +24,6 @@ npx playwright install
 ```bash
 git clone https://github.com/UA-1378-TAQC/coffecart.taqc.js.playwright
 cd playwright
-````
-
-### 2. Install Dependencies
-```bash
-npm install
 ````
 
 ### 3. (Optional) Setup Environment Variables
