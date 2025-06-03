@@ -16,10 +16,6 @@ If not installed, download from [NodeJs](https://nodejs.org/)
 ### 2. Install Dependencies
 ```bash
 npm install
-````
-
-### 3. Install TypeScript & Playwright
-```bash
 npx playwright install
 ````
 
