@@ -1,9 +1,9 @@
 name: Playwright Tests
 on:
   push:
-    branches: [ main, master, dev ]
+    branches: [ main, master ]
   pull_request:
-    branches: [ main, master, dev ]
+    branches: [ main, master ]
 jobs:
   test:
     timeout-minutes: 60
@@ -17,6 +17,8 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    - name: Install additional dependencies for headless browsers
+      run: sudo apt-get update && sudo apt-get install -y xvfb
     - name: Run Playwright tests
       run: xvfb-run --auto-servernum npx playwright test
       env:
