@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "baseUrl": "./",
+    "paths": {
+      "@pages/*": ["src/pages/*"],
+      "@modal/*": ["src/modal/*"],
+      "@tests/*": ["tests/*"],
+      "@component/*": ["src/component/*"]
+    },
+    "strict": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "types": ["playwright", "node"]
+  },
+  "include": ["**/*.ts"]
+}
+
