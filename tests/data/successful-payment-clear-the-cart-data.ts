@@ -5,7 +5,7 @@ export const ClearTheCartTestData ={
         "Espresso Macchiato",
         "Espresso"
     ],
-    validEmails : ["working_email@gmail.com", "non_working_email@gmail.com	"],
+    validEmails : ["working_email@gmail.com", "non_working_email@gmail.com"],
     validNames : ["Client1", "Client2"],
     buttonTitle : "Total: $0.00",
     navLinkToCartText : "cart (0)",
