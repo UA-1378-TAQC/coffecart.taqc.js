@@ -1,9 +1,9 @@
 import { Page, Locator, expect } from '@playwright/test';
 
 const SELECTORS = {
-    nameInput: '#name',
-    emailInput: '#email',
-    submitButton: '#submit-payment',
+    NAME_INPUT: '#name',
+    EMAIL_INPUT: '#email',
+    SUBMIT_BUTTON: '#submit-payment',
 };
 
 export class PaymentModal {
@@ -14,9 +14,9 @@ export class PaymentModal {
 
     constructor(page: Page) {
         this.page = page;
-        this.nameInput = page.locator(SELECTORS.nameInput);
-        this.emailInput = page.locator(SELECTORS.emailInput);
-        this.submitButton = page.locator(SELECTORS.submitButton);
+        this.nameInput = page.locator(SELECTORS.NAME_INPUT);
+        this.emailInput = page.locator(SELECTORS.EMAIL_INPUT);
+        this.submitButton = page.locator(SELECTORS.SUBMIT_BUTTON);
     }
 
     async enterName(name: string): Promise<void> {
