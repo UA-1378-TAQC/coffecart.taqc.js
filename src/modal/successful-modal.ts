@@ -1,7 +1,7 @@
 import { Page, Locator, expect } from '@playwright/test';
 
 const SELECTORS = {
-    successMessage: '.snackbar.success',
+    SUCCESS_MESSAGE: '.snackbar.success',
 };
 
 export class SuccessfulModal {
@@ -10,7 +10,7 @@ export class SuccessfulModal {
 
     constructor(page: Page) {
         this.page = page;
-        this.successText = page.locator(SELECTORS.successMessage);
+        this.successText = page.locator(SELECTORS.SUCCESS_MESSAGE);
     }
 
     async waitForVisible(): Promise<void> {
